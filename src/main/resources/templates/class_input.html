@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>수강강좌입력</title>
+    <style>
+        #app {
+            margin: auto;
+            margin-top: 60px;
+            width: 60%;
+            border: 3px solid #8ac007;
+            padding: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+        p {
+            font-size: 8px;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript">
+    function join(){
+        $.ajax({
+            url: "http://localhost:8080/cinput",
+            type: "POST",
+            data: {
+                "id" : $("#id").val(),
+                "field": $("#field").val(),
+                "class_name": $("#class_name").val(),
+                "credits": $("#credits").val(),
+                "english": $("#english").val()
+            },
+
+            success: function(res) {
+
+                console.log(res);
+                alert("등록되었습니다!");
+
+
+            }
+        });
+    }
+
+</script>
+<h1>수강 강좌 입력</h1>
+
+<div id="app">
+
+    <!-- <form id="frm" action="/addMember" method="post"> -->
+    <table>
+        <tr>
+            <td>분류</td>
+            <td>
+                <input type="text" id="field" name="field" placeholder="분류" size="20"/>
+                <input type="hidden" id="id" name="id" placeholder="학번" value=20221212 size="20"/>
+                <input type="hidden" id="credits" name="credits" placeholder="학점" value=11 size="20"/>
+            </td>
+        </tr>
+        <tr>
+            <td>영어강좌여부</td>
+            <td>
+                <input type="text" id="english" name="english" placeholder="영어강좌여부" size="20" />
+            </td>
+        </tr>
+        <tr>
+            <td>강좌명</td>
+            <td>
+                <input type="text" id="class_name" name="class_name" placeholder="강좌명" size="20" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="button" id="account" onclick ="join()">등록</button>
+            </td>
+        </tr>
+
+    </table>
+    <!-- </form> -->
+</div>
+</body>
+</html>

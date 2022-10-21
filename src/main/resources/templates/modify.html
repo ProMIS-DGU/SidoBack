@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>로그인</title>
+
+    <style>
+        #app {
+            margin: auto;
+            margin-top: 60px;
+            width: 60%;
+            border: 3px solid #8ac007;
+            padding: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<h1>수정</h1>
+<div id="app">
+    <table>
+        <tr>
+            <td>나의 이수 학기</td>
+            <td>
+                <input type="text" id="semester" placeholder="학기" size="20" />
+            </td>
+            <td>
+                <input type="text" id="toeic" placeholder="토익" size="20" />
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <button type="button" id="modify">변경하기</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<script>
+
+
+
+    $(document).ready(function() {
+        $("#modify").click(function() {
+            alert("클릭");
+            $.ajax({
+                url: "http://localhost:8080/modify",
+                type: "POST",
+                data: {
+                    semester: $("#semester").val(),
+                    toeic : $("#toeic").val()
+                },
+                success: function(json) {
+                    alert("성공");
+
+                },
+                error: function() {
+                    alert('error');
+                }
+            });
+        });
+    });
+
+</script>
+</body>
+</html>

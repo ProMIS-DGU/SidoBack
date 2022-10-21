@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.memberDAO">
+    <insert id="join" parameterType="com.example.demo.dto.memberDTO">
+        insert into member(name, id, pw, semester, dept, toeic) values (#{name}, #{id}, #{pw}, #{semester}, #{dept}, 'X')
+    </insert>
+
+    <select id="login" parameterType="com.example.demo.dto.memberDTO" resultType="com.example.demo.dto.memberDTO">
+        select * from member where id = #{id} and pw = #{pw}
+    </select>
+
+    <update id="modify" parameterType="com.example.demo.dto.memberDTO">
+        update member set semester = #{semester}, toeic = #{toeic} where id = 123
+    </update>
+
+    <select id="calMine" parameterType="com.example.demo.dto.memberDTO" resultType="int">
+        select sum(credits) from user_class where id = 20221212
+    </select>
+
+    <select id="calTotal" parameterType="com.example.demo.dto.deptInfoDTO" resultType="int">
+        select (common + must_major
+            + sel_major_basic + sel_major + normal + basic + english) as total from dept_info where years = #{years} and dept = #{dept}
+    </select>
+
+    <insert id="cinput" parameterType="com.example.demo.dto.userClassDTO">
+        insert into user_class(id, field, class_name, credits, english) values (#{id}, #{field}, #{class_name}, #{credits}, #{english})
+    </insert>
+</mapper>
