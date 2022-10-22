@@ -34,7 +34,7 @@
         <tr>
             <td>비밀번호</td>
             <td>
-                <input type="text" id="password" placeholder="비밀번호" size="20" />
+                <input type="text" id="pw" placeholder="비밀번호" size="20" />
             </td>
         </tr>
         <tr>
@@ -53,11 +53,11 @@
     $(document).ready(function() {
         $("#login").click(function() {
             $.ajax({
-                url: "http://localhost:8080/login",
+                url: "http://localhost:3000/login",
                 type: "POST",
                 data: {
                     id: $("#id").val(),
-                    password: $("#password").val()
+                    pw: $("#pw").val()
                 },
                 success: function(json) {
                     // alert('success');
@@ -69,7 +69,7 @@
                     } else {
                         // 로그인 정보를 세션에 저장
                         sessionStorage.setItem("login", JSON.stringify(json));
-                        alert(`${json.name}님 환영합니다!`);
+                        alert(`${json.id}님 환영합니다!`);
                         location.href = "../boards/boards.html";
                     }
                 },

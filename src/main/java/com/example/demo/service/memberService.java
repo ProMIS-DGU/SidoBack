@@ -28,5 +28,10 @@ public class memberService {
         return m.calTotal(dto);
     }
     public void cinput(userClassDTO dto) { m.cinput(dto);}
-
+    public classDTO userTotalClass(int id){
+        return m.userTotalClass(id);
+    }
+    public userClassDTO userClass(int id){
+        return m.userClass(id);
+    }
 }

@@ -16,5 +16,6 @@ public interface memberDAO {
     int calMine(memberDTO dto);
     int calTotal(deptInfoDTO dto);
     void cinput(userClassDTO dto);
-
+    classDTO userTotalClass(int id);
+    userClassDTO userClass(int id);
 }

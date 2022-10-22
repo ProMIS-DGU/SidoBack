@@ -6,24 +6,36 @@ import com.example.demo.dto.memberDTO;
 import com.example.demo.dto.userClassDTO;
 import com.example.demo.service.memberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-public class memberController {
+public class memberController { //test
     private final memberService m;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @PostMapping("/join")
     public void join(memberDTO dto) {
+        String enPw = passwordEncoder.encode(dto.getPw());
+        dto.setPw(enPw);
         m.join(dto);
     }
     @PostMapping("/login")
     public memberDTO login(memberDTO dto) {
-        return m.login(dto);
+        if(passwordEncoder.matches(dto.getPw(), m.login(dto).getPw())){
+            return dto;
+        }else{
+            return null;
+        }
+
     }
     @PostMapping("/modify")
     public void modify(memberDTO dto) { m.modify(dto);}
+
     @PostMapping("/calTotal")
     public int calTotal(deptInfoDTO dto){
         int total = m.calTotal(dto);
@@ -37,4 +49,14 @@ public class memberController {
 
     @PostMapping("/cinput")
     public void cinput(userClassDTO dto) {m.cinput(dto);}
+
+    @PostMapping("/userTotalClass")
+    public classDTO userTotalClass(int id) {
+        return m.userTotalClass(id);
+    }
+
+    @PostMapping("/userClass")
+    public userClassDTO userClass(int id) {
+        return m.userClass(id);
+    }
 }

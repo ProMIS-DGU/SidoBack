@@ -26,9 +26,8 @@
 <body>
 <script type="text/javascript">
     function join(){
-        alert($("#name").val();
         $.ajax({
-            url: "http://localhost:8080/join",
+            url: "../join",
             type: "POST",
             data: {
                 "name": $("#name").val(),
