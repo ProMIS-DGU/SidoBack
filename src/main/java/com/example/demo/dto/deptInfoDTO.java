@@ -5,7 +5,6 @@ public class deptInfoDTO {
     private int years;
     private int common;
     private int must_major;
-    private int sel_major_basic;
     private int sel_major;
     private int normal;
     private int basic;
@@ -41,14 +40,6 @@ public class deptInfoDTO {
 
     public void setMust_major(int must_major) {
         this.must_major = must_major;
-    }
-
-    public int getSel_major_basic() {
-        return sel_major_basic;
-    }
-
-    public void setSel_major_basic(int sel_major_basic) {
-        this.sel_major_basic = sel_major_basic;
     }
 
     public int getSel_major() {

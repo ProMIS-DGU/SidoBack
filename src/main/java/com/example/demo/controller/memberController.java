@@ -50,6 +50,11 @@ public class memberController { //test
     @PostMapping("/cinput")
     public void cinput(userClassDTO dto) {m.cinput(dto);}
 
+    @PostMapping("/fieldTotal")
+    public userClassDTO fieldTotal(memberDTO dto) {
+        return m.fieldTotal(dto);
+    }
+
     @PostMapping("/userTotalClass")
     public classDTO userTotalClass(int id) {
         return m.userTotalClass(id);
@@ -58,5 +63,20 @@ public class memberController { //test
     @PostMapping("/userClass")
     public userClassDTO userClass(int id) {
         return m.userClass(id);
+    }
+
+    @PostMapping("/userCreditsGroupingField")
+    public userClassDTO userCreditsGroupingField(int id) {
+        return m.userCreditsGroupingField(id);
+    }
+
+    @PostMapping("/avgCreditsGroupingField")
+    public userClassDTO avgCreditsGroupingField(memberDTO dto) {
+        return m.avgCreditsGroupingField(dto);
+    }
+
+    @PostMapping("/countForAvg")
+    public userClassDTO countForAvg(memberDTO dto) {
+        return m.countForAvg(dto);
     }
 }

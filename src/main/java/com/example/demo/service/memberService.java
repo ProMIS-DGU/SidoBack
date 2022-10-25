@@ -34,4 +34,16 @@ public class memberService {
     public userClassDTO userClass(int id){
         return m.userClass(id);
     }
+    public userClassDTO userCreditsGroupingField(int id){
+        return m.userCreditsGroupingField(id);
+    }
+    public userClassDTO avgCreditsGroupingField(memberDTO dto){
+        return m.avgCreditsGroupingField(dto);
+    }
+    public userClassDTO countForAvg(memberDTO dto){
+        return m.countForAvg(dto);
+    }
+    public userClassDTO fieldTotal(memberDTO dto){
+        return m.fieldTotal(dto);
+    }
 }

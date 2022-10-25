@@ -18,4 +18,8 @@ public interface memberDAO {
     void cinput(userClassDTO dto);
     classDTO userTotalClass(int id);
     userClassDTO userClass(int id);
+    userClassDTO userCreditsGroupingField(int id);
+    userClassDTO avgCreditsGroupingField(memberDTO dto);
+    userClassDTO countForAvg(memberDTO dto);
+    userClassDTO fieldTotal(memberDTO dto);
 }

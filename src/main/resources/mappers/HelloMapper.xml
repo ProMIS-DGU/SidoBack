@@ -13,10 +13,12 @@
         update member set semester = #{semester}, toeic = #{toeic} where id = 2022000000
     </update>
 
+    <!-- 2-3 / 2-4-->
     <select id="calMine" parameterType="com.example.demo.dto.memberDTO" resultType="int">
         select sum(credits) from user_class where id = 2022000000
     </select>
 
+    <!-- 2-4 -->
     <select id="calTotal" parameterType="com.example.demo.dto.deptInfoDTO" resultType="int">
         select (common + must_major
             + sel_major + normal + basic + english) as total from dept_info where years = #{years} and dept = #{dept}
@@ -26,12 +28,34 @@
         insert into user_class(id, dept, field, class_name, credits, english, semester) values (#{id}, #{dept}, #{field}, #{class_name}, #{credits}, #{english}, #{semester})
     </insert>
 
-    <select id="userTotalClass" parameterType="int" resultType="com.example.demo.dto.classDTO">
-        select field, class_name, credits, english from class_table where dept = (select dept from user_class where id = 2022000000)
-                                                                      and years = (select years from member where id = 2022000000)
+    <!-- 각 분야별 총점 -->
+    <select id="fieldTotal" parameterType="com.example.demo.dto.memberDTO" resultType="com.example.demo.dto.userClassDTO">
+        select field, sum(credits) from class_table group by field having semester = 2 and dept = 'test';
     </select>
 
+    <!-- 2-2 -->
+    <select id="userTotalClass" parameterType="int" resultType="com.example.demo.dto.classDTO">
+        select field, class_name, credits, english from class_table group by field having dept = (select dept from user_class where id = 2022000000)
+                                                                      and years = (select years from member where id = 2022000000)
+    </select>
+    <!-- 2-1 색칠을 위해 넘기는 거 (본인 수강강좌)-->
     <select id="userClass" parameterType="int" resultType="com.example.demo.dto.userClassDTO">
         select * from user_class where id = 2022000000
     </select>
+
+    <!-- 3-1 -->
+    <select id="userCreditsGroupingField" parameterType="int" resultType="com.example.demo.dto.userClassDTO">
+        select field, sum(credits) from user_class group by field having id = 2022000000;
+    </select>
+    <!-- 3-2 -->
+    <select id="avgCreditsGroupingField" parameterType="com.example.demo.dto.memberDTO" resultType="com.example.demo.dto.userClassDTO">
+        select field, sum(credits) from user_class group by field having semester = 2 and dept = 'test';
+    </select>
+    <!-- 3-3 -->
+    <select id="countForAvg" parameterType="com.example.demo.dto.memberDTO" resultType="int">
+        select count(id) from user_class group by id having semester = 2 and dept = 'test';
+    </select>
+
+
+
 </mapper>
