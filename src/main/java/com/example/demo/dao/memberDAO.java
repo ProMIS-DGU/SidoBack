@@ -7,6 +7,8 @@ import com.example.demo.dto.userClassDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Mapper
 @Repository
 public interface memberDAO {
@@ -16,10 +18,10 @@ public interface memberDAO {
     int calMine(memberDTO dto);
     int calTotal(deptInfoDTO dto);
     void cinput(userClassDTO dto);
-    classDTO userTotalClass(int id);
-    userClassDTO userClass(int id);
+    List<classDTO> userTotalClass(int id);
+    List<userClassDTO> userClass(int id);
     userClassDTO userCreditsGroupingField(int id);
     userClassDTO avgCreditsGroupingField(memberDTO dto);
-    userClassDTO countForAvg(memberDTO dto);
-    userClassDTO fieldTotal(memberDTO dto);
+    int countForAvg(memberDTO dto);
+    deptInfoDTO fieldTotal(memberDTO dto);
 }

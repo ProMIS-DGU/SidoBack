@@ -8,6 +8,8 @@ import com.example.demo.dto.userClassDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class memberService {
@@ -28,10 +30,10 @@ public class memberService {
         return m.calTotal(dto);
     }
     public void cinput(userClassDTO dto) { m.cinput(dto);}
-    public classDTO userTotalClass(int id){
+    public List<classDTO> userTotalClass(int id){
         return m.userTotalClass(id);
     }
-    public userClassDTO userClass(int id){
+    public List<userClassDTO> userClass(int id){
         return m.userClass(id);
     }
     public userClassDTO userCreditsGroupingField(int id){
@@ -40,10 +42,10 @@ public class memberService {
     public userClassDTO avgCreditsGroupingField(memberDTO dto){
         return m.avgCreditsGroupingField(dto);
     }
-    public userClassDTO countForAvg(memberDTO dto){
+    public int countForAvg(memberDTO dto){
         return m.countForAvg(dto);
     }
-    public userClassDTO fieldTotal(memberDTO dto){
+    public deptInfoDTO fieldTotal(memberDTO dto){
         return m.fieldTotal(dto);
     }
 }

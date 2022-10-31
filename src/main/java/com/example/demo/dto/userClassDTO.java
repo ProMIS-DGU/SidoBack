@@ -2,10 +2,36 @@ package com.example.demo.dto;
 
 public class userClassDTO {
     private int id;
+    private String dept;
     private String field;
-    private String class_name;
+    private String className;
     private int credits;
+    private int semester;
     private int english;
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public int getSemester() {
+        return semester;
+    }
+
+    public void setSemester(int semester) {
+        this.semester = semester;
+    }
+
+    public String getDept() {
+        return dept;
+    }
+
+    public void setDept(String dept) {
+        this.dept = dept;
+    }
 
     public int getId() {
         return id;
@@ -23,13 +49,7 @@ public class userClassDTO {
         this.field = field;
     }
 
-    public String getClass_name() {
-        return class_name;
-    }
 
-    public void setClass_name(String class_name) {
-        this.class_name = class_name;
-    }
 
     public int getCredits() {
         return credits;

@@ -1,19 +1,29 @@
 package com.example.demo.dto;
 
 public class classDTO {
-    private String dept;
     private String field;
-    private String class_name;
+    private String className;
     private int credits;
     private int english;
 
-    public String getDept() {
-        return dept;
+    public String getClassName() {
+        return className;
     }
 
-    public void setDept(String dept) {
-        this.dept = dept;
+    public void setClassName(String className) {
+        this.className = className;
     }
+
+    public int getYears() {
+        return years;
+    }
+
+    public void setYears(int years) {
+        this.years = years;
+    }
+
+    private int years;
+
 
     public String getField() {
         return field;
@@ -23,13 +33,6 @@ public class classDTO {
         this.field = field;
     }
 
-    public String getClass_name() {
-        return class_name;
-    }
-
-    public void setClass_name(String class_name) {
-        this.class_name = class_name;
-    }
 
     public int getCredits() {
         return credits;

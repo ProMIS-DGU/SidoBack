@@ -7,9 +7,14 @@ import com.example.demo.dto.userClassDTO;
 import com.example.demo.service.memberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,13 +23,13 @@ public class memberController { //test
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    @PostMapping("/join")
+    @PostMapping("/join") //postman 잘됨
     public void join(memberDTO dto) {
         String enPw = passwordEncoder.encode(dto.getPw());
         dto.setPw(enPw);
         m.join(dto);
     }
-    @PostMapping("/login")
+    @PostMapping("/login") //postman 잘됨
     public memberDTO login(memberDTO dto) {
         if(passwordEncoder.matches(dto.getPw(), m.login(dto).getPw())){
             return dto;
@@ -33,50 +38,54 @@ public class memberController { //test
         }
 
     }
-    @PostMapping("/modify")
+    @PostMapping("/modify") // 잘됨
     public void modify(memberDTO dto) { m.modify(dto);}
 
-    @PostMapping("/calTotal")
+    @PostMapping("/calTotal") // 잘됨
     public int calTotal(deptInfoDTO dto){
         int total = m.calTotal(dto);
         return total;
     }
-    @PostMapping("/calMine")
+    @PostMapping("/calMine") // 잘 됨
     public int calMine(memberDTO dto){
         int mine = m.calMine(dto);
         return mine;
     }
 
-    @PostMapping("/cinput")
+    @PostMapping("/cinput") // 잘 됨
     public void cinput(userClassDTO dto) {m.cinput(dto);}
 
-    @PostMapping("/fieldTotal")
-    public userClassDTO fieldTotal(memberDTO dto) {
+    @PostMapping("/fieldTotal") // 잘 됨 (postman은 _ 이거 인식 못함)
+    public deptInfoDTO fieldTotal(memberDTO dto) {
         return m.fieldTotal(dto);
     }
 
-    @PostMapping("/userTotalClass")
-    public classDTO userTotalClass(int id) {
-        return m.userTotalClass(id);
+    @PostMapping("/userTotalClass") // 잘 됨
+    public ResponseEntity<List<classDTO>> userTotalClass(int id) {
+        ResponseEntity<List<classDTO>> classes = null;
+        classes = new ResponseEntity<List<classDTO>>(m.userTotalClass(id), HttpStatus.OK);
+        return classes;
     }
 
-    @PostMapping("/userClass")
-    public userClassDTO userClass(int id) {
-        return m.userClass(id);
+    @PostMapping("/userClass") // 잘 됨
+    public ResponseEntity<List<userClassDTO>> userClass(int id) {
+        ResponseEntity<List<userClassDTO>> classes = null;
+        classes = new ResponseEntity<List<userClassDTO>>(m.userClass(id), HttpStatus.OK);
+        return classes;
     }
 
-    @PostMapping("/userCreditsGroupingField")
+    @PostMapping("/userCreditsGroupingField") // 잘 됨
     public userClassDTO userCreditsGroupingField(int id) {
         return m.userCreditsGroupingField(id);
     }
 
-    @PostMapping("/avgCreditsGroupingField")
+    @PostMapping("/avgCreditsGroupingField") // 잘 됨
     public userClassDTO avgCreditsGroupingField(memberDTO dto) {
         return m.avgCreditsGroupingField(dto);
     }
 
-    @PostMapping("/countForAvg")
-    public userClassDTO countForAvg(memberDTO dto) {
+    @PostMapping("/countForAvg") // 잘 됨
+    public int countForAvg(memberDTO dto) {
         return m.countForAvg(dto);
     }
 }
