@@ -18,17 +18,16 @@
         select sum(credits) from user_class where id = #{id}
     </select>
 
-    <!-- 2-4 (나중에 + normal 채워넣기) -->
+    <!-- 2-4 -->
     <select id="calTotal" parameterType="com.example.demo.dto.deptInfoDTO" resultType="int">
-        select (common + must_major
-            + sel_major + basic + english) as total from dept_info where years = #{years} and dept = #{dept}
+        select total from dept_info where years = #{years} and dept = #{dept}
     </select>
 
     <insert id="cinput" parameterType="com.example.demo.dto.userClassDTO">
         insert into user_class(id, dept, field, className, credits, english, semester) values (#{id}, #{dept}, #{field}, #{className}, #{credits}, #{english}, #{semester})
     </insert>
 
-    <!-- 각 분야별 총점 -->
+    <!-- 졸업 요건 각 분야별 총점 -->
     <select id="fieldTotal" parameterType="com.example.demo.dto.memberDTO" resultType="com.example.demo.dto.deptInfoDTO">
         select * from dept_info where dept = #{dept} and years = #{years}
     </select>
@@ -37,7 +36,7 @@
     <select id="userTotalClass" parameterType="int" resultType="com.example.demo.dto.classDTO">
         select field, className, credits, english, years from class_table where years = (select years from member where id = #{id})
     </select>
-    <!-- 2-1 색칠을 위해 넘기는 거 (본인 수강강좌)-->
+    <!-- 2-1 색칠을 위해 넘기는 거 (본인이 수강한 강좌)-->
     <select id="userClass" parameterType="int" resultType="com.example.demo.dto.userClassDTO">
         select * from user_class where id = #{id}
     </select>

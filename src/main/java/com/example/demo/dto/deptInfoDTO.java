@@ -9,6 +9,15 @@ public class deptInfoDTO {
     private int normal;
     private int basic;
     private int english;
+    private int total;
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
 
     public String getDept() {
         return dept;
