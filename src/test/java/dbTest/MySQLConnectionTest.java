@@ -11,7 +11,7 @@ public class MySQLConnectionTest {
     // DB 경로
     private static final String URL = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false";
     private static final String USER = "root";
-    private static final String PASSWORD = "wejyej0501@##";
+    private static final String PASSWORD = "000501";
 
     @Test
     public void testConnection() throws Exception {
