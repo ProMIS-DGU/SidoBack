@@ -47,7 +47,7 @@
     </select>
     <!-- 3-2 -->
     <select id="avgCreditsGroupingField" parameterType="com.example.demo.dto.memberDTO" resultType="com.example.demo.dto.userClassDTO">
-        select field, sum(credits) as credits from user_class where semester = #{semester} and dept = #{dept} group by field
+        select semester, field, sum(credits) as credits from user_class where semester = #{semester} and dept = #{dept} group by field
     </select>
     <!-- 3-3 -->
     <select id="countForAvg" parameterType="com.example.demo.dto.memberDTO" resultType="int">
