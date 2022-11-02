@@ -36,10 +36,10 @@ public class memberService {
     public List<userClassDTO> userClass(int id){
         return m.userClass(id);
     }
-    public userClassDTO userCreditsGroupingField(int id){
+    public List<userClassDTO> userCreditsGroupingField(int id){
         return m.userCreditsGroupingField(id);
     }
-    public userClassDTO avgCreditsGroupingField(memberDTO dto){
+    public List<userClassDTO> avgCreditsGroupingField(memberDTO dto){
         return m.avgCreditsGroupingField(dto);
     }
     public int countForAvg(memberDTO dto){

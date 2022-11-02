@@ -75,13 +75,17 @@ public class memberController { //test
     }
 
     @PostMapping("/userCreditsGroupingField") // 잘 됨
-    public userClassDTO userCreditsGroupingField(int id) {
-        return m.userCreditsGroupingField(id);
+    public ResponseEntity<List<userClassDTO>> userCreditsGroupingField(int id) {
+        ResponseEntity<List<userClassDTO>> entity = null;
+        entity = new ResponseEntity<List<userClassDTO>>(m.userCreditsGroupingField(id), HttpStatus.OK);
+        return entity;
     }
 
     @PostMapping("/avgCreditsGroupingField") // 잘 됨
-    public userClassDTO avgCreditsGroupingField(memberDTO dto) {
-        return m.avgCreditsGroupingField(dto);
+    public ResponseEntity<List<userClassDTO>> avgCreditsGroupingField(memberDTO dto) {
+        ResponseEntity<List<userClassDTO>> entity = null;
+        entity = new ResponseEntity<List<userClassDTO>>(m.avgCreditsGroupingField(dto), HttpStatus.OK);
+        return entity;
     }
 
     @PostMapping("/countForAvg") // 잘 됨
