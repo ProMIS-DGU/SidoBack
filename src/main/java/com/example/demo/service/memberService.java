@@ -20,8 +20,11 @@ public class memberService {
     public memberDTO login(memberDTO dto){
         return m.login(dto);
     }
-    public void modify(memberDTO dto){
-        m.modify(dto);
+    public int modify(memberDTO dto){
+        return m.modify(dto);
+    }
+    public void modifySemester(memberDTO dto){
+        m.modifySemester(dto);
     }
     public int calMine(memberDTO dto){
         return m.calMine(dto);

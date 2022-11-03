@@ -14,7 +14,8 @@ import java.util.List;
 public interface memberDAO {
     void join(memberDTO dto);
     memberDTO login(memberDTO dto);
-    void modify(memberDTO dto);
+    int modify(memberDTO dto);
+    void modifySemester(memberDTO dto);
     int calMine(memberDTO dto);
     int calTotal(deptInfoDTO dto);
     void cinput(userClassDTO dto);

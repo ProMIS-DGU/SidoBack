@@ -13,6 +13,10 @@
         update member set semester = #{semester}, toeic = #{toeic} where id = #{id}
     </update>
 
+    <update id="modifySemester" parameterType="com.example.demo.dto.memberDTO">
+        update user_class set semester = #{semester} where id = #{id};
+    </update>
+
     <!-- 2-3 / 2-4-->
     <select id="calMine" parameterType="com.example.demo.dto.memberDTO" resultType="int">
         select sum(credits) from user_class where id = #{id}

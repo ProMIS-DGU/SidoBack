@@ -28,6 +28,7 @@ public class memberController { //test
         String enPw = passwordEncoder.encode(dto.getPw());
         dto.setPw(enPw);
         m.join(dto);
+
     }
     @PostMapping("/login") //postman 잘됨
     public memberDTO login(memberDTO dto) {
@@ -39,7 +40,17 @@ public class memberController { //test
 
     }
     @PostMapping("/modify") // 잘됨
-    public void modify(memberDTO dto) { m.modify(dto);}
+    public int modify(memberDTO dto) {
+        int result = m.modify(dto);
+        System.out.println(dto.getSemester());
+        System.out.println(dto.getToeic());
+        System.out.println(dto.getId());
+
+        if(result > 0){
+            m.modifySemester(dto);
+        }
+        return 0;
+    }
 
     @PostMapping("/calTotal") // 잘됨
     public int calTotal(deptInfoDTO dto){
